@@ -1,0 +1,906 @@
+﻿@* @model RohatasTransportCore.Models.test *@
+@model RavindraInfratch.Models.PurchaseModel
+
+
+
+@{
+
+	ViewBag.Title ="Purchase";
+
+
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<section class="body">
+
+	<!-- start: header -->
+	<header class="header">
+		@* <uc1:AdminHeader ID="AdminHeader1" runat="server" /> *@
+		@Html.Partial("_AdminHeader")
+		<!-- start: search & user box -->
+		<!-- end: search & user box -->
+	</header>
+	<!-- end: header -->
+
+	<div class="inner-wrapper">
+		<!-- start: sidebar -->
+		@* @{
+		Html.RenderPartial("_AdminMenu");
+		} *@
+		@Html.Partial("_AdminMenu")
+		<!-- end: sidebar -->
+		<div>
+
+			<!-- Modal Basic -->
+			<!-- Modal Bootstrap -->
+
+		</div>
+
+		<section role="main" class="content-body card-margin">
+
+
+			<!-- start: page -->
+			@* @using (Html.BeginForm("Registation", "Admin", FormMethod.Post)) *@
+			<form method="post" enctype="multipart/form-data" action="AddPurchase">
+				<input type="text" asp-for="Id" hidden />
+				<div class="row">
+					@{
+						var SellerHidden = "";
+					}
+					@if (ViewData["ID"].ToString() == "0" || Convert.ToInt32(ViewData["ID"].ToString()) >= 5)
+					{
+						SellerHidden = "";
+					}
+					else
+					{
+						SellerHidden = "hidden";
+					}
+
+					<div class="col-lg-6" @SellerHidden>
+					 
+						
+						<section class="card form-wizard" id="w1" >
+							<header class="card-header">
+								<div class="card-actions">
+									<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+									<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+								</div>
+
+								<h2 class="card-title">Purchase </h2>
+							</header>
+
+							
+
+							<div class="card-body card-body-nopadding">
+
+								<div class="form-horizontal" novalidate="novalidate">
+									<div>
+										<div id="w1-account" class="tab-pane p-3 ">
+											
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-last-name">Sponsor Name</label>
+												<div class="col-sm-9">
+
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-user"></i>
+																</span>
+															</span>
+															<input type="text" asp-asp-for="@Model.Id" hidden />
+															@* <asp:DropDownList ID="DrpSponsor" runat="server" data-plugin-selectTwo class="form-control populate">
+
+															</asp:DropDownList> *@
+
+															<select asp-for="Sponsorid" data-plugin-selectTwo class="form-control populate" asp-items="@Model.SponsorList">
+																<option>Please select sponsor</option>
+																<option value="0">Admin</option>
+															</select>
+															<br />
+															<span asp-validation-for="Sponsorid" class="text-danger"></span>
+															@* @Html.DropDownListFor(m=>m.ac)
+															@Html.DropDownListFor(m => m.SessionID, new SelectList(Model.SessionList, "Value", "Text"), new { @class = "form-control form-control-lg" }) *@
+															@* @Html.DropDownListFor(m => m.RegistrationList, new SelectList(Model.RegistrationList, "Value", "Text"), "Select Sponsor", new { @class = "form-control populate" }) *@
+														</div>
+													</div>
+
+
+
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email">Seller Name</label>
+												<div class="col-sm-9">
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-user"></i>
+																</span>
+															</span>
+															 
+															
+															<select asp-for="Accountid" data-plugin-selectTwo class="form-control populate" asp-items="@Model.SellerList">
+																<option >Select Seller</option>
+															</select>
+
+
+
+														</div>
+														<span asp-validation-for="Accountid" class="text-danger"></span>
+													</div>
+												</div>
+											</div>
+										@* 	<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email"> Mobile No.</label>
+												<div class="col-sm-9">
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-intersex"></i>
+																</span>
+															</span>
+															<input type="tel" asp-for="Mobile" class="form-control"/>
+
+														</div>
+
+													</div>
+												</div>
+											</div> *@
+
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-username">Bank Name</label>
+												<div class="col-sm-9">
+
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-phone"></i>
+																</span>
+															</span>
+															<input type="text" asp-for="Bankname" class="form-control" />
+
+
+														</div>
+														<span asp-validation-for="Bankname" class="text-danger"></span>
+													</div>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email">Branch Name</label>
+												<div class="col-sm-9">
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-envelope"></i>
+																</span>
+															</span>
+															<input type="text" asp-for="Branchname" class="form-control" />
+
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email">IFSC</label>
+												<div class="col-sm-9">
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-location-dot"></i>
+																</span>
+															</span>
+															<input type="text" asp-for="Ifsc" class="form-control" /> 
+
+
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email">Account No.</label>
+												<div class="col-sm-9">
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-location-dot"></i>
+																</span>
+															</span>
+															<input type="text" asp-for="AccountNo" class="form-control" />
+
+
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email">Cheque No.</label>
+												<div class="col-sm-9">
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-city"></i>
+																</span>
+															</span>
+															<input type="text" asp-for="Cheque" class="form-control" />
+
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email">Cheque Date</label>
+												<div class="col-sm-9">
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-city"></i>
+																</span>
+															</span>
+															<input type="date" asp-for="Chequedate" class="form-control" />
+
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-last-name">UPI/Refference No.</label>
+												<div class="col-sm-9">
+
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-city"></i>
+																</span>
+															</span>
+															 <input type="text" asp-for="Upi" class="form-control" />
+															<br />
+															<span asp-validation-for="Upi" class="text-danger"></span>
+
+														</div>
+													</div>
+
+
+
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-last-name">Share Holder</label>
+												<div class="col-sm-9">
+
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-city"></i>
+																</span>
+															</span>
+															<textarea asp-for="Shareholder" rows="3" class="form-control" data-plugin-textarea-autosize></textarea>
+															<br />
+															<span asp-validation-for="Shareholder" class="text-danger"></span>
+
+														</div>
+													</div>
+
+
+
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-last-name">Agreement Time Limit</label>
+												<div class="col-sm-9">
+
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-city"></i>
+																</span>
+															</span>
+															<input type="text" asp-for="Agreementdeadline" class="form-control" />
+															<br />
+															<span asp-validation-for="Agreementdeadline" class="text-danger"></span>
+
+														</div>
+													</div>
+
+
+
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-last-name">Aaraji No.</label>
+												<div class="col-sm-9">
+
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-city"></i>
+																</span>
+															</span>
+															<input type="text" asp-for="Aarajino" class="form-control" />
+															<br />
+															<span asp-validation-for="Aarajino" class="text-danger"></span>
+
+														</div>
+													</div>
+
+
+
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-last-name">Area</label>
+												<div class="col-sm-9">
+
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-city"></i>
+																</span>
+															</span>
+															<input type="text" asp-for="Area" class="form-control" />
+															<br />
+															<span asp-validation-for="Area" class="text-danger"></span>
+
+														</div>
+													</div>
+
+
+
+												</div>
+											</div>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+							<div class="card-footer">
+
+								@* <Button ID="Button1" runat="server" Text="Submit"  class="btn btn-warning mt-2 float-right" /> *@
+								@if (Model.Process ==0)
+								{
+									<input type="submit" class="btn btn-warning mt-2 float-right" value="Next" />
+								}
+								else
+								{
+									<input type="submit" class="btn btn-warning mt-2 float-right" value="Submit" />
+								}
+
+							</div>
+
+						</section>
+					
+					</div>
+					<div class="col-lg-6">
+						@{
+							var DocHidden = "";
+						}
+						@if (ViewData["ID"].ToString() == "1" || Convert.ToInt32(ViewData["ID"].ToString()) >= 5)
+						{
+							DocHidden = "";
+						}
+						else
+						{
+							DocHidden = "hidden";
+						}
+
+						<div @DocHidden>
+							<section class="card form-wizard" id="w1">
+								<header class="card-header">
+									<div class="card-actions">
+										<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+										<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+									</div>
+
+									<h2 class="card-title">Upload Documents</h2>
+								</header>
+								<div class="card-body card-body-nopadding">
+
+									<div class="form-horizontal" novalidate="novalidate">
+										<div>
+											<div id="w1-account" class="tab-pane p-3 ">
+												<div class="form-group row">
+													@* <label class="col-lg-3 control-label text-lg-right pt-2">Photo Upload</label> *@
+													<div class="col-lg-9">
+														<div class="input-group mb-12">
+															<label class="input-group-text">Upload Bank NOC</label>
+															<input type="file" class="form-control" asp-for="imgBanknoc">
+															@* <span asp-validation-for="Reg.Photo" class="text-danger"></span> *@
+														</div>
+
+
+													</div>
+													<div class="col-lg-3">
+														@if (Model.Banknoc != null)
+														{
+															<a href="../../Upload/@Model.Banknoc"><img src="~/images/download1.png" width="50" /></a>
+														}
+
+													</div>
+												</div>
+												<div class="form-group row">
+
+													<div class="col-lg-9">
+														<div class="input-group mb-9">
+															<label class="input-group-text">Upload Old Agreement</label>
+															<input type="file" class="form-control" asp-for="imgOldagreement">
+															@* <span asp-validation-for="Reg.AadharFront" class="text-danger"></span> *@
+														</div>
+
+													</div>
+													<div class="col-lg-3">
+														@if (Model.Oldagreement != null)
+														{
+															<a href="../../Upload/@Model.Oldagreement"><img src="~/images/download1.png" width="50" /></a>
+														}
+													</div>
+												</div>
+											 
+											</div>
+
+
+										</div>
+									</div>
+								</div>
+								<div class="card-footer">
+
+
+									<input type="submit" value="Upload" class="btn btn-warning mt-2 float-right" />
+								</div>
+							</section>
+						</div>
+ 
+						 
+					 
+						@{
+							var PaymentHidden = "";
+						}
+						@if (ViewData["ID"].ToString() == "2" || Convert.ToInt32(ViewData["ID"].ToString()) >= 5)
+						{
+							PaymentHidden = "";
+						}
+						else
+						{
+							PaymentHidden = "hidden";
+						}
+						<div @PaymentHidden>
+							<section class="card form-wizard" id="w1">
+								<header class="card-header">
+									<div class="card-actions">
+										<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+										<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+									</div>
+
+									<h2 class="card-title">Payment</h2>
+								</header>
+								<div class="card-body card-body-nopadding">
+
+									<div class="form-horizontal" novalidate="novalidate">
+										<div>
+											<div id="w1-account" class="tab-pane p-3 ">
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email"> Final Amount.</label>
+													<div class="col-sm-9">
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-rupee"></i>
+																	</span>
+																</span>
+																<input type="tel" asp-for="Finalamount" class="form-control" />
+
+															</div>
+
+														</div>
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email"> Advance</label>
+													<div class="col-sm-9">
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-intersex"></i>
+																	</span>
+																</span>
+																<input type="tel" asp-for="Advanceamoutn" class="form-control" />
+
+															</div>
+
+														</div>
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email"> Due</label>
+													<div class="col-sm-9">
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-intersex"></i>
+																	</span>
+																</span>
+																<input type="tel" asp-for="Dueamount" class="form-control" />
+
+															</div>
+
+														</div>
+													</div>
+												</div>
+
+											</div>
+
+
+										</div>
+									</div>
+								</div>
+								<div class="card-footer">
+
+
+									<input type="submit" value="Submit" class="btn btn-warning mt-2 float-right" />
+								</div>
+							</section>
+						</div>
+						@{
+							var LegalHidden = "";
+						}
+						@if (ViewData["ID"].ToString() == "3" || Convert.ToInt32(ViewData["ID"].ToString()) >= 5)
+						{
+							LegalHidden = "";
+						}
+						else
+						{
+							LegalHidden = "hidden";
+						}
+
+						<div @LegalHidden>
+							<section class="card form-wizard" id="w1">
+								<header class="card-header">
+									<div class="card-actions">
+										<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+										<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+									</div>
+
+									<h2 class="card-title">Legal</h2>
+								</header>
+								<div class="card-body card-body-nopadding">
+
+									<div class="form-horizontal" novalidate="novalidate">
+										<div>
+											<div id="w1-account" class="tab-pane p-3 ">
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email"> Advocate Name</label>
+													<div class="col-sm-9">
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-rupee"></i>
+																	</span>
+																</span>
+																<input type="tel" asp-for="AdvocateName" class="form-control" />
+
+															</div>
+
+														</div>
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email"> Court Fee</label>
+													<div class="col-sm-9">
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-intersex"></i>
+																	</span>
+																</span>
+																<input type="tel" asp-for="Courtfee" class="form-control" />
+
+															</div>
+
+														</div>
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email"> Advocate Fee</label>
+													<div class="col-sm-9">
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-intersex"></i>
+																	</span>
+																</span>
+																<input type="tel" asp-for="AdvocateFee" class="form-control" />
+
+															</div>
+
+														</div>
+													</div>
+												</div>
+
+													<div class="form-group row">
+													@* <label class="col-lg-3 control-label text-lg-right pt-2">Photo Upload</label> *@
+													<div class="col-lg-9">
+														<div class="input-group mb-12">
+															<label class="input-group-text">Upload Stamp</label>
+															<input type="file" class="form-control" asp-for="imgStamp">
+															@* <span asp-validation-for="Reg.Photo" class="text-danger"></span> *@
+														</div>
+
+
+													</div>
+													<div class="col-lg-3">
+														@if (Model.Stamp != null)
+														{
+
+															<a href="../../Upload/@Model.Stamp"><img src="~/images/download1.png" width="50" /></a>
+														}
+
+													</div>
+												</div>
+												<div class="form-group row">
+													@* <label class="col-lg-3 control-label text-lg-right pt-2">Photo Upload</label> *@
+													<div class="col-lg-9">
+														<div class="input-group mb-12">
+															<label class="input-group-text">Upload Rasid</label>
+															<input type="file" class="form-control" asp-for="imgRasid">
+															@* <span asp-validation-for="Reg.Photo" class="text-danger"></span> *@
+														</div>
+
+
+													</div>
+													<div class="col-lg-3">
+														@if (Model.Rasid != null)
+														{
+															<a href="../../Upload/@Model.Rasid"><img src="~/images/download1.png" width="50" /></a>
+														}
+
+													</div>
+												</div>
+
+											</div>
+
+
+										</div>
+									</div>
+								</div>
+								<div class="card-footer">
+
+
+									<input type="submit" value="Submit" class="btn btn-warning mt-2 float-right" />
+								</div>
+							</section>
+						</div>
+						
+
+					</div>
+				 
+					  
+						@{
+							var GovHidden = "";
+						}
+						@if (ViewData["ID"].ToString() == "4" || Convert.ToInt32(ViewData["ID"].ToString()) >= 5)
+						{
+							GovHidden = "";
+						}
+						else
+					{
+						GovHidden = "hidden";
+					}
+					<div class="col-lg-6" @GovHidden>
+							<section class="card form-wizard" id="w1">
+								<header class="card-header">
+									<div class="card-actions">
+										<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+										<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+									</div>
+
+									<h2 class="card-title">Goverment Inspection</h2>
+								</header>
+								<div class="card-body card-body-nopadding">
+
+									<div class="form-horizontal" novalidate="novalidate">
+										<div>
+											<div id="w1-account" class="tab-pane p-3 ">
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email"> Lekhpal Name</label>
+													<div class="col-sm-9">
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-rupee"></i>
+																	</span>
+																</span>
+																<input type="tel" asp-for="Lekhpalname" class="form-control" />
+
+															</div>
+
+														</div>
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email"> Lekhpal Mobile</label>
+													<div class="col-sm-9">
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-intersex"></i>
+																	</span>
+																</span>
+																<input type="tel" asp-for="Lekhpalmobile" class="form-control" />
+
+															</div>
+
+														</div>
+													</div>
+												</div>
+												<div class="form-group row">
+													@* <label class="col-lg-3 control-label text-lg-right pt-2">Photo Upload</label> *@
+													<div class="col-lg-9">
+														<div class="input-group mb-12">
+															<label class="input-group-text">Upload 1356 or 1359 </label>
+															<input type="file" class="form-control" asp-for="imgInspection1356">
+															@* <span asp-validation-for="Reg.Photo" class="text-danger"></span> *@
+														</div>
+
+
+													</div>
+													<div class="col-lg-3">
+														@if (Model.Inspection1356 != null)
+														{
+														<a href="../../Upload/@Model.Inspection1356"><img src="~/images/download1.png" width="50" /></a>
+														}
+
+													</div>
+												</div>
+
+												<div class="form-group row">
+													@* <label class="col-lg-3 control-label text-lg-right pt-2">Photo Upload</label> *@
+													<div class="col-lg-9">
+														<div class="input-group mb-12">
+															<label class="input-group-text">Upload 1291 Inspection</label>
+															<input type="file" class="form-control" asp-for="imgInspection1291">
+															@* <span asp-validation-for="Reg.Photo" class="text-danger"></span> *@
+														</div>
+
+
+													</div>
+													<div class="col-lg-3">
+														@if (Model.Inspection1291 != null)
+														{
+														<a href="../../Upload/@Model.Inspection1291"><img src="~/images/download1.png" width="50" /></a>
+														}
+
+													</div>
+												</div>
+												<div class="form-group row">
+													@* <label class="col-lg-3 control-label text-lg-right pt-2">Photo Upload</label> *@
+													<div class="col-lg-9">
+														<div class="input-group mb-12">
+															<label class="input-group-text">Upload 12 Sala </label>
+															<input type="file" class="form-control" asp-for="imgSala12">
+															@* <span asp-validation-for="Reg.Photo" class="text-danger"></span> *@
+														</div>
+
+
+													</div>
+													<div class="col-lg-3">
+														@if (Model.Sala12 != null)
+														{
+														<a href="../../Upload/@Model.Sala12"><img src="~/images/download1.png" width="50" /></a>
+														}
+
+													</div>
+												</div>
+												<div class="form-group row">
+													@* <label class="col-lg-3 control-label text-lg-right pt-2">Photo Upload</label> *@
+													<div class="col-lg-9">
+														<div class="input-group mb-12">
+															<label class="input-group-text">Upload Najri Naksha</label>
+															<input type="file" class="form-control" asp-for="imgNajrinaksha">
+															@* <span asp-validation-for="Reg.Photo" class="text-danger"></span> *@
+														</div>
+
+
+													</div>
+													<div class="col-lg-3">
+														@if (Model.Najrinaksha != null)
+														{
+														<a href="../../Upload/@Model.Najrinaksha"><img src="~/images/download1.png" width="50" /></a>
+														}
+
+													</div>
+												</div>
+												<div class="form-group row">
+													@* <label class="col-lg-3 control-label text-lg-right pt-2">Photo Upload</label> *@
+													<div class="col-lg-9">
+														<div class="input-group mb-12">
+															<label class="input-group-text">Upload Khasara </label>
+															<input type="file" class="form-control" asp-for="imgKhasra">
+															@* <span asp-validation-for="Reg.Photo" class="text-danger"></span> *@
+														</div>
+
+
+													</div>
+													<div class="col-lg-3">
+														@if (Model.Khasra != null)
+														{
+														<a href="../../Upload/@Model.Khasra"><img src="~/images/download1.png" width="50" /></a>
+														}
+
+													</div>
+												</div>
+												<div class="form-group row">
+													@* <label class="col-lg-3 control-label text-lg-right pt-2">Photo Upload</label> *@
+													<div class="col-lg-9">
+														<div class="input-group mb-12">
+															<label class="input-group-text">Upload Katauni</label>
+															<input type="file" class="form-control" asp-for="imgKhatauni">
+															@* <span asp-validation-for="Reg.Photo" class="text-danger"></span> *@
+														</div>
+
+
+													</div>
+													<div class="col-lg-3">
+														@if (Model.Khatauni != null)
+														{
+														<a href="../../Upload/@Model.Khatauni"><img src="~/images/download1.png" width="50" /></a>
+														}
+
+													</div>
+												</div>
+											</div>
+
+
+										</div>
+									</div>
+								</div>
+								<div class="card-footer">
+
+
+									<input type="submit" value="Submit" class="btn btn-warning mt-2 float-right" />
+								</div>
+							</section>
+						</div>
+					  
+
+				</div>
+			</form>
+			<!-- end: page -->
+		</section>
+		@section Scripts
+  {
+			<script>
+				 var openfile = function (event) {
+					 var file = event.target.files[0];
+					 var videoPlayer = document.getElementById('videoPlayer');
+					 var url = URL.createObjectURL(file);
+					 videoPlayer.setAttribute('src', url);
+				 }
+			</script>
+			<partial name="_ValidationScriptsPartial" />
+
+		}
+	</div>
+
+
+</section>

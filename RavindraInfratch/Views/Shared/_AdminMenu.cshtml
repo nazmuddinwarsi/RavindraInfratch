@@ -1,0 +1,244 @@
+﻿<aside id="sidebar-left" class="sidebar-left">
+
+	<div class="sidebar-header">
+		<div class="sidebar-title">
+			Navigation
+		</div>
+		<div class="sidebar-toggle d-none d-md-block" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
+			<i class="fas fa-bars" aria-label="Toggle sidebar"></i>
+		</div>
+	</div>
+
+	<div class="nano">
+		<div class="nano-content">
+			<nav id="menu" class="nav-main" role="navigation">
+
+				<ul class="nav nav-main">
+					<li>
+						<a class="nav-link" href="~/admin/Dashboard">
+							<i class="fas fa-home" aria-hidden="true"></i>
+							<span>Dashboard</span>
+						</a>
+					</li>
+					<li class="nav-parent">
+						<a class="nav-link" href="#">
+							<i class="fas fa-cogs" aria-hidden="true"></i>
+							<span>Master</span>
+						</a>
+						<ul class="nav nav-children">
+							<li>
+								<a class="nav-link" href="~/admin/CompanyDetails">
+									Company Details
+								</a>
+							</li>
+							<li>
+								<a class="nav-link" href="~/admin/StateList">
+									State List
+								</a>
+							</li>
+							<li>
+								<a class="nav-link" href="~/admin/ExpenseType">
+									Expense Type
+								</a>
+							</li>
+							<li>
+								<a class="nav-link" href="~/admin/bank">
+									Bank
+								</a>
+							</li>
+							<li>
+								<a class="nav-link" href="~/admin/ProjectList">
+									Add Projects 
+								</a>
+							</li>
+							<li>
+								<a class="nav-link" href="~/admin/PropertyTypeList">
+									Add Property Type
+								</a>
+							</li>
+							<li>
+								<a class="nav-link" href="~/admin/BlockList">
+									Add Block
+								</a>
+							</li>
+							<li>
+								<a class="nav-link" href="~/admin/PlotList">
+									Add Plot
+								</a>
+							</li>
+							<li>
+								<a class="nav-link" href="ComingSoon">
+									Change Password
+								</a>
+							</li>
+							
+
+						</ul>
+					</li>
+
+					<li class="nav-parent">
+						<a class="nav-link" href="#">
+							<i class="fas fa-user" aria-hidden="true"></i>
+							<span>Registrations</span>
+						</a>
+						<ul class="nav nav-children">
+							<li>
+								<a class="nav-link" href="~/admin/RegistrationList?AType=Senior Executive">
+									Senior Executive List
+								</a>
+
+							</li>
+							<li>
+								<a class="nav-link" href="~/admin/RegistrationList?AType=Customer">
+									Customer List
+								</a>
+								
+							</li>
+							<li>
+								<a class="nav-link" href="~/admin/RegistrationList?AType=Seller">
+									Seller List
+								</a>
+							</li>
+							<li>
+								<a class="nav-link" href="~/admin/RegistrationList?AType=Partner">
+									Partner List
+								</a>
+							</li>
+
+							<li>
+								<a class="nav-link" href="~/admin/RegistrationList?AType=Investor">
+									Investor List
+								</a>
+							</li>
+
+							<li>
+								<a class="nav-link" href="~/admin/RegistrationList?AType=Dealer">
+									Dealer List
+								</a>
+							</li>
+							<li>
+								<a class="nav-link" href="~/admin/RegistrationList?AType=Business Associate">
+									Business Associate List
+								</a>
+							</li>
+							 
+						</ul>
+					</li>
+
+
+					<li class="nav-parent">
+						<a class="nav-link" href="#">
+							<i class="fas fa-exchange-alt" aria-hidden="true"></i>
+							<span>Transaction</span>
+						</a>
+						<ul class="nav nav-children">
+							<li>
+								<a class="nav-link" href="~/admin/AddPurchase">
+									Purchase
+								</a>
+							</li>
+							<li>
+								<a class="nav-link" href="~/admin/PurchaseList">
+									Purchase List
+								</a>
+							</li>
+
+							<li>
+								<a class="nav-link" href="~/admin/AddSale">
+									Sale
+								</a>
+							</li>
+
+							<li>
+								<a class="nav-link" href="~/admin/SaleList">
+									Sale List
+								</a>
+							</li>
+							<li>
+								<a class="nav-link" href="~/admin/OtherSale">
+								Other Sale 
+								</a>
+							</li>
+
+							<li>
+								<a class="nav-link" href="~/admin/OtherSaleList">
+									Other Sale List
+								</a>
+							</li>
+							
+							<li>
+								<a class="nav-link" href="~/admin/ReceiptList">
+									Receipt
+								</a>
+							</li>
+							<li>
+								<a class="nav-link" href="~/admin/CommissionList">
+									Pay Commission
+								</a>
+							</li>
+							<li>
+								<a class="nav-link" href="ComingSoon.aspx">
+									Expense
+								</a>
+							</li>
+							<li>
+								<a class="nav-link" href="ComingSoon.aspx">
+									Expense List
+								</a>
+							</li>
+
+						</ul>
+					</li>
+					 
+					@* <li class="nav-parent">
+						<a class="nav-link" href="#">
+							<i class="fas fa-copy" aria-hidden="true"></i>
+							<span>Reports</span>
+						</a>
+						<ul class="nav nav-children">
+
+							<li>
+								<a class="nav-link" href="BiltyList.aspx?Deleted=53">
+									Deleted Bilty List
+								</a>
+							</li>
+
+							<li>
+								<a class="nav-link" href="InvoiceList.aspx?Deleted=53">
+									Deleted  Bill Invoice List
+								</a>
+							</li>
+
+						</ul>
+					</li> *@
+					 
+					 
+					 
+
+
+
+				</ul>
+			</nav>
+
+
+		</div>
+
+		<script>
+			// Maintain Scroll Position
+			if (typeof localStorage !== 'undefined') {
+				if (localStorage.getItem('sidebar-left-position') !== null) {
+					var initialPosition = localStorage.getItem('sidebar-left-position'),
+						sidebarLeft = document.querySelector('#sidebar-left .nano-content');
+
+					sidebarLeft.scrollTop = initialPosition;
+				}
+			}
+		</script>
+
+
+	</div>
+
+</aside>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@

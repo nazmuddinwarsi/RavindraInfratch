@@ -1,0 +1,193 @@
+﻿@model List<RavindraInfratch.Models.StatementModel>
+@{
+	@foreach (var RType in Model)
+	{
+		ViewBag.Title = " Statement";
+
+	}
+
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<section class="body">
+
+	<!-- start: header -->
+	<header class="header">
+		@* <uc1:AdminHeader ID="AdminHeader1" runat="server" /> *@
+		@Html.Partial("_AdminHeader")
+		<!-- start: search & user box -->
+		<!-- end: search & user box -->
+	</header>
+	<!-- end: header -->
+
+	<div class="inner-wrapper">
+		<!-- start: sidebar -->
+		@* @{
+		Html.RenderPartial("_AdminMenu");
+		} *@
+		@Html.Partial("_AdminMenu")
+		<!-- end: sidebar -->
+		<div>
+
+			<!-- Modal Basic -->
+			<!-- Modal Bootstrap -->
+
+		</div>
+
+		<section role="main" class="content-body card-margin">
+
+
+			<!-- start: page -->
+
+
+			<div class="row">
+
+				<div class="col-lg-12">
+					<section class="card form-wizard" id="w1">
+						<header class="card-header">
+							<div class="card-actions">
+								<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+								<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+							</div>
+							@* @foreach (var RType in Model) *@
+
+							<h2 class="card-title">Statement  </h2>
+
+
+						</header>
+						<div class="card-body card-body-nopadding">
+							<ul class="nav nav-pills nav-pills-primary">
+								&nbsp;
+								<li class="nav-item">
+
+									@* <a class="nav-link active" href="Registation?tTpye"=@RType.TType">Add New</a> *@
+									@* <a asp-controller="Admin" asp-action="Registation" class="nav-link active" asp-route-id="@ViewData["Ttype"]">Add New</a> *@
+
+								</li>
+
+
+
+							</ul>
+							<div id="w1-account" class="tab-pane p-3 ">
+								<div>
+									<table cellspacing="0" rules="all" class="table table-bordered table-striped mb-0" border="1" id="grd" style="border-collapse:collapse;">
+										<thead>
+											<tr class="headerStyle">
+												<th scope="col">Sr.</th>
+												<th scope="col">Date</th>
+												<th scope="col">Type</th>
+												<th scope="col">Party Name</th>
+												<th scope="col">Property Amount</th>
+												<th scope="col">Commission</th>
+												<th scope="col">Paid Amount</th>
+												
+												
+
+
+												@* <th align="center" scope="col" style="width:50px;">Edit</th>
+												<th align="center" scope="col" style="width:50px;">Delete</th> *@
+											</tr>
+										</thead>
+										<tbody>
+											@{
+											decimal com = 0;
+												decimal pro = 0;
+												decimal paid = 0;
+											}
+											@if (Model != null && Model.Any())
+											{
+												@* @Model.stateLists = new  *@
+												var i = 0;
+												
+												@foreach (var Reg in Model)
+												{
+													 
+													i = i + 1;
+													var ActiveColor = "";
+													com = com + Reg.Commission;
+													pro = pro + Reg.Amt;
+													paid = paid + Reg.PaymentRecAmt;
+													 
+													<tr class="rowStyle" style="background-color:@ActiveColor">
+														<td style="white-space:nowrap;">@i</td>
+														<td style="white-space:nowrap;">@Reg.IDate</td>
+														<td style="white-space: nowrap">@Reg.CommissionType</td>
+														<td style="white-space:nowrap;">@Reg.PartyName</td>
+
+														@{
+															if(@Reg.Amt!=0)
+															{
+														<td style="white-space:nowrap;">@Reg.Amt</td>
+															}
+															else
+															{
+														<td style="white-space:nowrap;"> </td>
+															}
+
+															if (@Reg.Commission != 0)
+															{
+																<td style="white-space:nowrap;">@Reg.Commission</td>
+															}
+															else
+															{
+																<td style="white-space:nowrap;"> </td>
+															}
+															if (@Reg.PaymentRecAmt != 0)
+															{
+																<td style="white-space: nowrap">@Reg.PaymentRecAmt</td>
+															}
+															else
+															{
+																<td style="white-space:nowrap;"> </td>
+															}
+															}
+														
+														
+														
+														
+													 
+														 
+													</tr>
+													 
+												}
+
+											}
+										</tbody>
+										<tfoot>
+											@{
+												decimal bal = com - paid;
+											}
+											<tr class="headerStyle">
+												<th scope="col"></th>
+												<th scope="col"> </th>
+												<th scope="col"></th>
+												<th scope="col">Total</th>
+												<th scope="col">@pro</th>
+												<th scope="col">@com</th>
+												<th scope="col">@paid / Bal:@bal</th>
+												
+
+
+
+												@* <th align="center" scope="col" style="width:50px;">Edit</th>
+												<th align="center" scope="col" style="width:50px;">Delete</th> *@
+											</tr>
+										</tfoot>
+									</table>
+								</div>
+							</div>
+						</div>
+
+					</section>
+				</div>
+			</div>
+			<!-- end: page -->
+		</section>
+	</div>
+
+
+</section>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}

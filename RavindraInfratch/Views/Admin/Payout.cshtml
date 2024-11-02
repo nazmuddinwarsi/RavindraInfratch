@@ -1,0 +1,484 @@
+﻿@model RavindraInfratch.Models.PaidCommissionModel
+
+
+
+@{
+
+	ViewBag.Title = ViewData["AType"] + " Registation";
+
+
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<section class="body">
+
+	<!-- start: header -->
+	<header class="header">
+		@* <uc1:AdminHeader ID="AdminHeader1" runat="server" /> *@
+		@Html.Partial("_AdminHeader")
+		<!-- start: search & user box -->
+		<!-- end: search & user box -->
+	</header>
+	<!-- end: header -->
+
+	<div class="inner-wrapper">
+		<!-- start: sidebar -->
+		@* @{
+		Html.RenderPartial("_AdminMenu");
+		} *@
+		@Html.Partial("_AdminMenu")
+		<!-- end: sidebar -->
+		<div>
+
+			<!-- Modal Basic -->
+			<!-- Modal Bootstrap -->
+
+		</div>
+
+		<section role="main" class="content-body card-margin">
+
+
+			<!-- start: page -->
+			@* @using (Html.BeginForm("Registation", "Admin", FormMethod.Post)) *@
+			<form method="post" enctype="multipart/form-data" action="Registation">
+
+				<div class="row">
+
+
+					<div class="col-lg-6">
+						<section class="card form-wizard" id="w1">
+							<header class="card-header">
+								<div class="card-actions">
+									<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+									<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+								</div>
+
+								<h2 class="card-title">@ViewData["Name"]   </h2>
+							</header>
+
+
+
+							<div class="card-body card-body-nopadding">
+
+								<div class="form-horizontal" novalidate="novalidate">
+									<div>
+										<div id="w1-account" class="tab-pane p-3 ">
+											@* @{
+											var h = "";
+											}
+											@if (ViewData["Ttype"].ToString() == "Direct-Agent Registation")
+											{
+											h = "hidden";
+											} *@
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-last-name">Sponsor Name</label>
+												<div class="col-sm-9">
+
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-user"></i>
+																</span>
+															</span>
+															<input type="tel" asp-for="AccountID" hidden maxlength="10" class="form-control" />
+															<input type="tel" asp-for="Ref" hidden maxlength="10" class="form-control" />
+
+															<input type="text" asp-for="SponsorName" readonly class="form-control" />
+
+															<input type="text" asp-for="SponsorName" hidden maxlength="10" class="form-control" />
+															@* @Html.DropDownListFor(m=>m.ac)
+															@Html.DropDownListFor(m => m.SessionID, new SelectList(Model.SessionList, "Value", "Text"), new { @class = "form-control form-control-lg" }) *@
+															@* @Html.DropDownListFor(m => m.RegistrationList, new SelectList(Model.RegistrationList, "Value", "Text"), "Select Sponsor", new { @class = "form-control populate" }) *@
+														</div>
+													</div>
+
+
+
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email"> Name</label>
+												<div class="col-sm-9">
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-user"></i>
+																</span>
+															</span>
+															<input type="tel" asp-for="Id" hidden maxlength="10" class="form-control" />
+															
+															<input type="text" asp-for="Accountname" readonly class="form-control" />
+
+
+
+														</div>
+														 
+													</div>
+												</div>
+											</div>
+											 
+
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-username">Mobile No.</label>
+												<div class="col-sm-9">
+
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-phone"></i>
+																</span>
+															</span>
+															<input type="text" asp-for="Mobile" readonly class="form-control" />
+
+
+														</div>
+													 
+													</div>
+												</div>
+											</div>.
+										 
+										 
+
+
+
+
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email">Current Address</label>
+												<div class="col-sm-9">
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-location-dot"></i>
+																</span>
+															</span>
+															<textarea rows="3" asp-for="Address" class="form-control" readonly data-plugin-textarea-autosize></textarea>
+
+
+														</div>
+													</div>
+												</div>
+											</div>
+										 
+										 
+
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+							<div class="card-footer">
+
+								@* <Button ID="Button1" runat="server" Text="Submit"  class="btn btn-warning mt-2 float-right" /> *@
+								 
+							</div>
+
+						</section>
+					</div>
+					<div class="col-lg-6">
+					 
+						<div >
+							<section class="card form-wizard" id="w1">
+								<header class="card-header">
+									<div class="card-actions">
+										<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+										<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+									</div>
+
+									<h2 class="card-title">Payment  </h2>
+								</header>
+								<div class="card-body card-body-nopadding">
+
+									<div class="form-horizontal" novalidate="novalidate">
+										<div>
+											<div id="w1-account" class="tab-pane p-3 ">
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-last-name">Payment Mode</label>
+													<div class="col-sm-9">
+
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-bank"></i>
+																	</span>
+																</span>
+																@* <asp:DropDownList ID="DrpSponsor" runat="server" data-plugin-selectTwo class="form-control populate">
+
+																</asp:DropDownList> *@
+
+																<select asp-for="Paymode" data-plugin-selectTwo id="paymentmode" class="form-control populate">
+																	 
+																	<option value="Cash">Cash</option>
+																	<option value="Cheque">Cheque</option>
+																	<option value="Bank Transfer">Bank Transfer</option>
+																	<option value="UPI">UPI</option>
+																</select>
+																<br />
+																 
+																@* @Html.DropDownListFor(m=>m.ac)
+																@Html.DropDownListFor(m => m.SessionID, new SelectList(Model.SessionList, "Value", "Text"), new { @class = "form-control form-control-lg" }) *@
+																@* @Html.DropDownListFor(m => m.RegistrationList, new SelectList(Model.RegistrationList, "Value", "Text"), "Select Sponsor", new { @class = "form-control populate" }) *@
+															</div>
+														</div>
+
+
+
+													</div>
+												</div>
+												<div id="bank" style="padding-bottom:20px; display:none" >
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-username">Bank Name</label>
+													<div class="col-sm-9">
+
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-bank"></i>
+																	</span>
+																</span>
+																<input type="text" asp-for="Bankname"   class="form-control" />
+
+
+															</div>
+															 
+														</div>
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-username">BranchName</label>
+													<div class="col-sm-9">
+
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-bank"></i>
+																	</span>
+																</span>
+																<input type="text" asp-for="Branchname"   class="form-control" />
+
+
+															</div>
+															 
+														</div>
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-username">IFSC</label>
+													<div class="col-sm-9">
+
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-bank"></i>
+																	</span>
+																</span>
+																<input type="text" asp-for="Ifsc"   class="form-control" />
+
+
+															</div>
+														 
+														</div>
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-username">Account No.</label>
+													<div class="col-sm-9">
+
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-bank"></i>
+																	</span>
+																</span>
+																<input type="text" asp-for="AccountNo"   class="form-control" />
+
+
+															</div>
+														 
+														</div>
+													</div>
+												</div>
+												</div>
+												<div id="upi" style="padding-bottom:20px; display:none">
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-username">UTR</label>
+													<div class="col-sm-9">
+
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-bank"></i>
+																	</span>
+																</span>
+																<input type="text" asp-for="Utr" class="form-control" />
+
+
+															</div>
+															 
+														</div>
+													</div>
+												</div>
+												</div>
+												<div id="cheque" style="padding-bottom:20px; display:none">
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-username">Cheque No.</label>
+													<div class="col-sm-9">
+
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-bank"></i>
+																	</span>
+																</span>
+																	<input type="text" asp-for="Cheque" class="form-control" />
+
+
+															</div>
+															 
+														</div>
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-username">Cheque Date</label>
+													<div class="col-sm-9">
+
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-date"></i>
+																	</span>
+																</span>
+																<input type="date" asp-for="Chequedate"  class="form-control" />
+
+
+															</div>
+														 
+														</div>
+													</div>
+												</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-username">Commission Amount</label>
+													<div class="col-sm-9">
+
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-amount"></i>
+																	</span>
+																</span>
+																<input type="text" asp-for="Amount" readonly class="form-control" />
+
+
+															</div>
+															<span asp-validation-for="Amount" class="text-danger"></span>
+														</div>
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-username">Paid Amount</label>
+													<div class="col-sm-9">
+
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-bank"></i>
+																	</span>
+																</span>
+																<input type="text" asp-for="PaidAmount" class="form-control" />
+
+
+															</div>
+															<span asp-validation-for="PaidAmount" class="text-danger"></span>
+														</div>
+													</div>
+												</div>
+
+												 
+
+											</div>
+
+
+										</div>
+									</div>
+								</div>
+								<div class="card-footer">
+
+
+									<input type="submit" value="Submit" class="btn btn-warning mt-2 float-right" />
+								</div>
+							</section>
+						</div>
+
+					</div>
+
+				</div>
+			</form>
+			<!-- end: page -->
+		</section>
+		@section Scripts
+  {
+	  <script>
+				$("#paymentmode").change(function () {
+					var x = document.getElementById("paymentmode").value;
+					 
+					if (x == "Cash") {
+						 
+						var style = this.value == 1 ? 'block' : 'none';
+						var none = 'none';
+						var block='block'
+						document.getElementById('bank').style.display = none;
+						document.getElementById('upi').style.display = none;
+						document.getElementById('cheque').style.display = none;
+						
+					}
+					if (x == "Cheque") {
+
+						var none = 'none';
+						var block = 'block'
+						document.getElementById('bank').style.display = none;
+						document.getElementById('upi').style.display = none;
+						document.getElementById('cheque').style.display = block;
+
+					}
+					if (x == "Bank Transfer") {
+
+						var none = 'none';
+						var block = 'block'
+						document.getElementById('bank').style.display = block;
+						document.getElementById('upi').style.display = none;
+						document.getElementById('cheque').style.display = none;
+
+					}
+					if (x == "UPI") {
+
+						var none = 'none';
+						var block = 'block'
+						document.getElementById('bank').style.display = none;
+						document.getElementById('upi').style.display = block;
+						document.getElementById('cheque').style.display = none;
+
+					}
+					
+
+				});
+	  </script>
+			<partial name="_ValidationScriptsPartial" />
+		}
+	</div>
+
+
+</section>

@@ -1,0 +1,173 @@
+﻿@model RavindraInfratch.Models.ReceiptModel
+@{
+	ViewBag.Title = "Invoice";
+	 
+}
+<html>
+
+<!-- Mirrored from preview.oklerthemes.com/porto-admin/3.0.0/pages-invoice-print.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Jul 2020 03:19:31 GMT -->
+<head>
+	<title> Invoice Print</title>
+	<!-- Web Fonts  -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet" type="text/css">
+
+	<!-- Vendor CSS -->
+	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css" />
+
+	<!-- Invoice Print Style -->
+	<link rel="stylesheet" href="css/invoice-print.css" />
+</head>
+<body>
+	<div class="invoice">
+		<header class="clearfix">
+			<div class="row">
+				<div class="col-sm-6 mt-3">
+					<h2 class="h2 mt-0 mb-1 text-dark font-weight-bold">Receipt</h2>
+					<h4 class="h4 m-0 text-dark font-weight-bold">#@Model.ReceiptNo  </h4>
+				</div>
+				<div class="col-sm-6 text-right mt-3 mb-3">
+					<address class="ib ">
+						RAVINDRA INFRATECH LIMITED
+						<br />
+						Block - C ,Floor no.- 5, Flat no.519, Hari Enclave Narayanpur, Dafi, Susuwahi Varanasi - 221011(U.P)
+						<br />
+						Phone: +91-9415839130
+						<br />
+						ravindrainfratech@gmail.com
+					</address>
+					<div class="ib">
+						<img src="~/../images/logo.png" alt="RAVINDRA INFRATECH LIMITED" />
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="bill-info">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="bill-to">
+						<p class="h5 mb-1 text-dark font-weight-semibold">To:</p>
+						<address>
+							@Model.Accountname
+							<br />
+							@Model.Address
+							<br />
+							Phone: +91-@Model.Mobile
+							<br />
+							@Model.Email
+						</address>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="bill-data text-right">
+						<p class="mb-0">
+							<span class="text-dark">Invoice Date:</span>
+							<span class="value">@Model.Createddate.Value.ToString("dd/MM/yyyy")</span>
+						</p>
+					 
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<table style="border:solid 2px; width:100%">
+			<tr style="border:solid 2px"><td colspan="4" style="background-color:#CCCCCC; color:black; font-size:larger ">Plot Details</td></tr>
+			<tr>
+				<td><b>Plot No</b></td>
+				<td>: @Model.Plot</td>
+				<td><b>Area </b></td>
+				<td>: @Model.Plotsize Sq. Ft.</td>
+
+
+			</tr>
+			<tr>
+				<td><b>Direction</b></td>
+				<td>: @Model.Direction</td>
+				<td><b>Chauhaddi </b></td>
+				<td>: @Model.Chauhaddi  </td>
+
+
+			</tr>
+			<tr>
+				<td><b>Aaraji No</b></td>
+				<td>: @Model.Aarajino</td>
+				<td> </td>
+				<td>  </td>
+
+
+			</tr>
+		</table>
+		<br />
+		<table style="border:solid 2px; width:100%">
+			<tr style="border:solid 2px"><td colspan="4" style="background-color:#CCCCCC; color:black; font-size:larger ">Payment Details</td></tr>
+
+			<tr>
+				<td><b>Cheque / Ref. Number</b></td>
+				<td>
+					: @Model.Cheque
+				</td>
+				<td><b>Payment Date</b></td>
+				<td>
+					:@Model.Chequedate.Value.ToString("dd/MM/yyyy")
+				</td>
+			</tr>
+
+			<tr><td><b>Bank</b></td><td>: @Model.Bankname (@Model.Branchname - @Model.Ifsc) -@Model.Accountno </td><td><b>Final Amount</b></td><td>: &#8377; @Model.Finalamount</td></tr>
+			<tr><td><b>Total Recieved Amount</b></td><td>: &#8377; @Model.Receivedamount</td><td><b>Due Amount</b></td><td>: &#8377; @Model.Dueamount</td></tr>
+
+			<tr><td><b>Recieved Amount In Words</b></td><td colspan="3">: <span id="AmountInWords">  </span></td></tr>
+		</table>
+		<br />
+
+		<table style="border:solid 2px; width:100% ">
+			<tr style="border:solid 2px"><td colspan="2" style="background-color:#CCCCCC; color:black; font-size:larger ">Terms & Condition</td></tr>
+			<tr><td>This is a computer generated document.<br />No signatures as such are required.</td><td><b>Regd. Office </b><br />Block - C ,Floor no.- 5, Flat no.519, Hari Enclave Narayanpur, Dafi, Susuwahi Varanasi - 221011(U.P)<br /><b>Mobile No</b> : +91 9415839130<br /><b>Email </b>: ravindrainfratech@gmail.com<br />Website : www.ravindrainfratech.com</td></tr>
+			<tr><td colspan="2">Note</td></tr>
+			<tr>
+				<td colspan="2">
+					1. This Acknoledgement is subject to realization of cheque and fulfillment of terms & conditions mentioned in the application
+					form, allotment letter and / or the Builder Buyer's understanding.
+
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					2. All disputes are subject to Varanasi Jurisdiction only.
+				</td>
+			</tr>
+			<tr><td colspan="2">3. Any discrepancies shall be brought to the notice of the company within 15 days of issue of receipt.</td></tr>
+
+		</table>
+	</div>
+		@section Scripts
+  {
+	<script>
+		 
+				var a = ['', 'One ', 'Two ', 'Three ', 'Four ', 'Five ', 'Six ', 'Seven ', 'Eight ', 'Nine ', 'Ten ', 'Eleven ', 'Twelve ', 'Thirteen ', 'Fourteen ', 'Fifteen ', 'Sixteen ', 'Seventeen ', 'Eighteen ', 'Nineteen '];
+		var b = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+		function inWords(num) {
+
+			if ((num = num.toString()).length > 9) return 'overflow';
+			n = ('000000000' + num).substr(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
+			if (!n) return; var str = '';
+			str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + 'crore ' : '';
+			str += (n[2] != 0) ? (a[Number(n[2])] || b[n[2][0]] + ' ' + a[n[2][1]]) + 'lakh ' : '';
+			str += (n[3] != 0) ? (a[Number(n[3])] || b[n[3][0]] + ' ' + a[n[3][1]]) + 'thousand ' : '';
+			str += (n[4] != 0) ? (a[Number(n[4])] || b[n[4][0]] + ' ' + a[n[4][1]]) + 'hundred ' : '';
+			str += (n[5] != 0) ? ((str != '') ? 'and ' : '') + (a[Number(n[5])] || b[n[5][0]] + ' ' + a[n[5][1]]) + ' ' : '';
+			str += 'only ';
+			return str;
+		}
+		$(document).ready(function () {
+			var a = @Model.Receivedamount;
+			//alert(a);
+			document.getElementById('AmountInWords').innerHTML = inWords(a);
+			//$('#AmountInWords').html("Rs. " + inWords(@Html.DisplayFor(model => model.Receivedamount)); //inWords(your amount)
+		})
+		window.print();
+	</script>
+		<partial name="_ValidationScriptsPartial" />
+	}
+</body>
+
+<!-- Mirrored from preview.oklerthemes.com/porto-admin/3.0.0/pages-invoice-print.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Jul 2020 03:19:33 GMT -->
+</html>

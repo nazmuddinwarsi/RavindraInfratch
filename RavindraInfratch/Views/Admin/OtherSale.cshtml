@@ -1,0 +1,1015 @@
+﻿@model RavindraInfratch.Models.SaleModel
+@{
+
+	ViewBag.Title = "Sale";
+
+
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<section class="body">
+
+	<!-- start: header -->
+	<header class="header">
+		@* <uc1:AdminHeader ID="AdminHeader1" runat="server" /> *@
+		@Html.Partial("_AdminHeader")
+		<!-- start: search & user box -->
+		<!-- end: search & user box -->
+	</header>
+	<!-- end: header -->
+
+	<div class="inner-wrapper">
+		<!-- start: sidebar -->
+		@* @{
+		Html.RenderPartial("_AdminMenu");
+		} *@
+		@Html.Partial("_AdminMenu")
+		<!-- end: sidebar -->
+		<div>
+
+			<!-- Modal Basic -->
+			<!-- Modal Bootstrap -->
+
+		</div>
+
+		<section role="main" class="content-body card-margin">
+
+
+			<!-- start: page -->
+			@* @using (Html.BeginForm("Registation", "Admin", FormMethod.Post)) *@
+			<form method="post" enctype="multipart/form-data" action="OtherSale">
+				<input type="text" asp-for="Id" hidden />
+				<div class="row">
+					@{
+						var SellerHidden = "";
+					}
+					@* @if (ViewData["ID"].ToString() == "0" || Convert.ToInt32(ViewData["ID"].ToString()) >= 5)
+					{
+					SellerHidden = "";
+					}
+					else
+					{
+					SellerHidden = "hidden";
+					} *@
+
+					<div class="col-lg-6" @SellerHidden>
+
+
+						<section class="card form-wizard" id="w1">
+							<header class="card-header">
+								<div class="card-actions">
+									<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+									<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+								</div>
+
+								<h2 class="card-title">Other Sale </h2>
+							</header>
+
+
+
+							<div class="card-body card-body-nopadding">
+
+								<div class="form-horizontal" novalidate="novalidate">
+									<div>
+										<div id="w1-account" class="tab-pane p-3 ">
+											<input type="text" id="id" asp-for="Id" class="form-control " hidden />
+
+											<div class="form-group row">
+
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email">Customer Name</label>
+												<div class="col-sm-9">
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-user"></i>
+																</span>
+															</span>
+
+
+															<select asp-for="Customerid" data-plugin-selectTwo class="form-control populate" id="customerid" asp-items="@Model.CustomerList">
+																<option>Select Customer</option>
+															</select>
+
+
+
+														</div>
+														<span asp-validation-for="Customerid" class="text-danger"></span>
+													</div>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-username">Mobile No.</label>
+												<div class="col-sm-9">
+
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-phone"></i>
+																</span>
+															</span>
+															<input type="text" readonly id="mobile" class="form-control" />
+
+
+														</div>
+
+													</div>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email">Current Address</label>
+												<div class="col-sm-9">
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-location-dot"></i>
+																</span>
+															</span>
+															<textarea rows="3" id="address" readonly class="form-control" data-plugin-textarea-autosize></textarea>
+
+
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-username">Bank Name</label>
+												<div class="col-sm-9">
+
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-phone"></i>
+																</span>
+															</span>
+															<input type="text" asp-for="Bankname" class="form-control" />
+
+
+														</div>
+														<span asp-validation-for="Bankname" class="text-danger"></span>
+													</div>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email">Branch Name</label>
+												<div class="col-sm-9">
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-envelope"></i>
+																</span>
+															</span>
+															<input type="text" asp-for="Branchname" class="form-control" />
+
+														</div>
+														<span asp-validation-for="Branchname" class="text-danger" />
+													</div>
+												</div>
+											</div>
+
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email">IFSC</label>
+												<div class="col-sm-9">
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-location-dot"></i>
+																</span>
+															</span>
+															<input type="text" asp-for="Ifsc" class="form-control" />
+
+
+														</div>
+														<span asp-validation-for="Ifsc" class="text-danger" />
+													</div>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email">Account No.</label>
+												<div class="col-sm-9">
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-location-dot"></i>
+																</span>
+															</span>
+															<input type="text" asp-for="Accountno" class="form-control" />
+
+
+														</div>
+														<span asp-validation-for="Accountno" class="text-danger" />
+													</div>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email">Cheque No.</label>
+												<div class="col-sm-9">
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-city"></i>
+																</span>
+															</span>
+															<input type="text" asp-for="Cheque" class="form-control" />
+
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email">Payment Date</label>
+												<div class="col-sm-9">
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-city"></i>
+																</span>
+															</span>
+															<input type="date" asp-for="Chequedate" class="form-control" />
+
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-last-name">UPI/Refference No.</label>
+												<div class="col-sm-9">
+
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-city"></i>
+																</span>
+															</span>
+															<input type="text" asp-for="Upi" class="form-control" />
+															<br />
+
+
+														</div>
+													</div>
+
+
+
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-last-name">Final Amount</label>
+												<div class="col-sm-9">
+
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-city"></i>
+																</span>
+															</span>
+															<input type="text" asp-for="Finalamount" class="form-control" />
+															<br />
+
+
+														</div>
+														<span asp-validation-for="Finalamount" class="text-danger"></span>
+													</div>
+
+
+
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-last-name">Advance Payment</label>
+												<div class="col-sm-9">
+
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-city"></i>
+																</span>
+															</span>
+															<input type="text" asp-for="Advanceamoutn" class="form-control" />
+															<br />
+
+
+														</div>
+														<span asp-validation-for="Advanceamoutn" class="text-danger"></span>
+													</div>
+
+
+
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-last-name">Balance Amount</label>
+												<div class="col-sm-9">
+
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-city"></i>
+																</span>
+															</span>
+															<input type="text" asp-for="Dueamount" class="form-control" />
+															<br />
+
+
+														</div>
+														<span asp-validation-for="Dueamount" class="text-danger"></span>
+													</div>
+
+
+
+												</div>
+											</div>
+
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+							<div class="card-footer">
+
+								@* <Button ID="Button1" runat="server" Text="Submit"  class="btn btn-warning mt-2 float-right" /> *@
+
+
+								@* <input type="submit" class="btn btn-warning mt-2 float-right" value="Submit" /> *@
+
+
+							</div>
+
+						</section>
+						<div>
+							<section class="card form-wizard" id="w1">
+								<header class="card-header">
+									<div class="card-actions">
+										<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+										<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+									</div>
+
+									<h2 class="card-title">Property Details</h2>
+								</header>
+								<div class="card-body card-body-nopadding">
+
+									<div class="form-horizontal" novalidate="novalidate">
+										<div>
+											<div id="w1-account" class="tab-pane p-3 ">
+												<div id="w1-account" class="tab-pane p-3 ">
+													<div class="form-group row">
+														<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-last-name">Property Details</label>
+														<div class="col-sm-9">
+															<div class="col-lg-12">
+																<div class="input-group">
+																	<span class="input-group-prepend">
+																		<span class="input-group-text">
+																			<i class="fas fa-location-dot"></i>
+																		</span>
+																	</span>
+																	<textarea rows="5" asp-for="Propertydetails" class="form-control" data-plugin-textarea-autosize></textarea>
+
+
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-last-name">Profit</label>
+														<div class="col-sm-9">
+															<div class="col-lg-12">
+																<div class="input-group">
+																	<span class="input-group-prepend">
+																		<span class="input-group-text">
+																			<i class="fas fa-location-dot"></i>
+																		</span>
+																	</span>
+																	<input type="text" id="profit" asp-for="profit" class="form-control"/>
+																	 
+
+
+																</div>
+															</div>
+														</div>
+													</div>
+
+												</div>
+											 
+											</div>
+
+
+										</div>
+									</div>
+								</div>
+								@* <div class="card-footer">
+
+
+								<input type="submit" value="Submit" class="btn btn-warning mt-2 float-right" />
+								</div> *@
+							</section>
+						</div>
+					</div>
+					<div class="col-lg-6">
+
+
+						<div>
+							<section class="card form-wizard" id="w1">
+								<header class="card-header">
+									<div class="card-actions">
+										<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+										<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+									</div>
+
+									<h2 class="card-title">Sponsor Details</h2>
+								</header>
+								<div class="card-body card-body-nopadding">
+
+									<div class="form-horizontal" novalidate="novalidate">
+										<div>
+											<div id="w1-account" class="tab-pane p-3 ">
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-last-name">Sponsor Name</label>
+													<div class="col-sm-9">
+
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-user"></i>
+																	</span>
+																</span>
+																<input type="text" asp-asp-for="@Model.Id" hidden />
+
+
+																<select asp-for="Sponsorid" data-plugin-selectTwo class="form-control populate" id="sponsorid" asp-items="@Model.SponsorList">
+																	<option>Please select sponsor</option>
+																	<option value="0">Admin</option>
+																</select>
+																<br />
+																<span asp-validation-for="Sponsorid" class="text-danger"></span>
+
+															</div>
+														</div>
+
+
+
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-username">Mobile No.</label>
+													<div class="col-sm-9">
+
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-phone"></i>
+																	</span>
+																</span>
+																<input type="text" readonly id="smobile" class="form-control" />
+
+
+															</div>
+
+														</div>
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email">Current Address</label>
+													<div class="col-sm-9">
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-location-dot"></i>
+																	</span>
+																</span>
+																<textarea rows="3" id="saddress" readonly class="form-control" data-plugin-textarea-autosize></textarea>
+
+
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-username">Bank Name</label>
+													<div class="col-sm-9">
+
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-phone"></i>
+																	</span>
+																</span>
+																<input type="text" asp-for="Sbankname" class="form-control" />
+
+
+															</div>
+															<span asp-validation-for="Sbankname" class="text-danger"></span>
+														</div>
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email">Branch Name</label>
+													<div class="col-sm-9">
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-envelope"></i>
+																	</span>
+																</span>
+																<input type="text" asp-for="Sbranchname" class="form-control" />
+
+															</div>
+															<span asp-validation-for="Sbranchname" class="text-danger" />
+														</div>
+													</div>
+												</div>
+
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email">IFSC</label>
+													<div class="col-sm-9">
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-location-dot"></i>
+																	</span>
+																</span>
+																<input type="text" asp-for="Sifsc" class="form-control" />
+
+
+															</div>
+															<span asp-validation-for="Sifsc" class="text-danger" />
+														</div>
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email">Account No.</label>
+													<div class="col-sm-9">
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-location-dot"></i>
+																	</span>
+																</span>
+																<input type="text" asp-for="SAccountno" class="form-control" />
+
+
+															</div>
+															<span asp-validation-for="SAccountno" class="text-danger" />
+														</div>
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email">Cheque No.</label>
+													<div class="col-sm-9">
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-city"></i>
+																	</span>
+																</span>
+																<input type="text" asp-for="Scheque" class="form-control" />
+
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email">Cheque Date</label>
+													<div class="col-sm-9">
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-city"></i>
+																	</span>
+																</span>
+																<input type="date" asp-for="Schequedate" class="form-control" />
+
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-last-name">UPI/Refference No.</label>
+													<div class="col-sm-9">
+
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-city"></i>
+																	</span>
+																</span>
+																<input type="text" asp-for="Supi" class="form-control" />
+																<br />
+
+
+															</div>
+														</div>
+
+
+
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-last-name">Commission % </label>
+													<div class="col-sm-9">
+
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-city"></i>
+																	</span>
+																</span>
+																<input type="text" id="commission" onkeyup="commisionFunction()" asp-for="Sponsorcommision" class="form-control" />
+																<br />
+
+
+															</div>
+															<span asp-validation-for="Sponsorcommision" class="text-danger"></span>
+														</div>
+
+
+
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-last-name">Final Commission</label>
+													<div class="col-sm-9">
+
+														<div class="col-lg-12">
+															<div class="input-group">
+																<span class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-city"></i>
+																	</span>
+																</span>
+																<input type="text" id="commissionvalue" asp-for="Sfinalcommission" class="form-control" />
+																<br />
+
+
+															</div>
+															<span asp-validation-for="Sfinalcommission" class="text-danger"></span>
+														</div>
+
+
+
+													</div>
+												</div>
+
+											</div>
+										</div>
+									</div>
+									<div class="card-footer">
+
+										@*
+										<input type="submit" value="Upload" class="btn btn-warning mt-2 float-right" /> *@
+									</div>
+							</section>
+						</div>
+
+
+						<section class="card form-wizard" id="w1">
+							<header class="card-header">
+								<div class="card-actions">
+									<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+									<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+								</div>
+
+								<h2 class="card-title">Loan</h2>
+							</header>
+							<div class="card-body card-body-nopadding">
+
+								<div class="form-horizontal" novalidate="novalidate">
+									<div>
+										<div id="w1-account" class="tab-pane p-3 ">
+											<div class="form-group row">
+
+												<div class="col-lg-9">
+													<div class="input-group mb-12">
+														<label class="input-group-text">Upload Full Details</label>
+														<input type="file" class="form-control" asp-for="imgLoancustomerfull">
+
+													</div>
+
+
+												</div>
+												<div class="col-lg-3">
+													@if (Model.Loancustomerfull != null)
+													{
+
+														<a href="../../Upload/@Model.Loancustomerfull"><img src="~/images/download1.png" width="50" /></a>
+													}
+
+												</div>
+											</div>
+											<div class="form-group row">
+
+												<div class="col-lg-9">
+													<div class="input-group mb-12">
+														<label class="input-group-text">Upload SalarySlip</label>
+														<input type="file" class="form-control" asp-for="imgLoansalaryslip">
+
+													</div>
+
+
+												</div>
+												<div class="col-lg-3">
+													@if (Model.Loansalaryslip != null)
+													{
+
+														<a href="../../Upload/@Model.Loansalaryslip"><img src="~/images/download1.png" width="50" /></a>
+													}
+
+												</div>
+											</div>
+
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+							<div class="card-footer">
+							</div>
+						</section>
+						<section class="card form-wizard" id="w1">
+							<header class="card-header">
+								<div class="card-actions">
+									<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+									<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+								</div>
+
+								<h2 class="card-title">Customer Feedback</h2>
+							</header>
+							<div class="card-body card-body-nopadding">
+
+								<div class="form-horizontal" novalidate="novalidate">
+									<div>
+										<div id="w1-account" class="tab-pane p-3 ">
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email">Customer Feedback</label>
+												<div class="col-sm-9">
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-location-dot"></i>
+																</span>
+															</span>
+															<textarea rows="5" asp-for="Customerfeedback" class="form-control" data-plugin-textarea-autosize></textarea>
+
+
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+							<div class="card-footer">
+
+
+								<input type="submit" value="Submit" class="btn btn-warning mt-2 float-right" />
+							</div>
+						</section>
+
+
+
+
+
+
+
+					</div>
+
+
+
+
+				</div>
+			</form>
+			<!-- end: page -->
+		</section>
+		@section Scripts
+  {
+
+			<script>
+				$(document).ready(function () {
+					getPropertyByProjectID();
+					// var a = $("#projectid Option:Selected").val();
+					// alert(a);
+					// getBlockByPropropertyID();
+					// gePlotByBlockID();
+					// alert($('#id').val());
+					// document.getElementById("propertyid").value = "17";
+					// if ($('#id').val() != 0) {
+					// 	var a = document.getElementById("propertyid").value
+					// 	alert(a);
+					// }
+
+				}
+				);
+				$("#sponsorid").change(function () {
+					$.ajax({
+						url: '@Url.Action("GetSponsorDetails", "Admin")',
+						type: 'GET',
+						data: {
+							sponsorid: $('#sponsorid').val(),
+						},
+						success: function (data) {
+
+							$(data).each(
+								function (index, item) {
+									// $('#propertyid').append('<option value =' + item.properytid + '>' + item.tType + '</option>');
+									$(document.getElementById("smobile").value = item.mobile);
+									$(document.getElementById("saddress").value = item.address);
+									// $('#blockid').append('<option value ="' + item.BlockID + '">' + item.BLOCK + '</option>')
+									// $('#plotno').append('<option value ="' + item.Plots + '">' + item.Plots + '</option>')
+								}
+							);
+						}
+
+
+					});
+
+				});
+				$("#customerid").change(function () {
+					$.ajax({
+						url: '@Url.Action("GetCustomerDetails", "Admin")',
+						type: 'GET',
+						data: {
+							customerid: $('#customerid').val(),
+						},
+						success: function (data) {
+
+							$(data).each(
+								function (index, item) {
+									// $('#propertyid').append('<option value =' + item.properytid + '>' + item.tType + '</option>');
+									$(document.getElementById("mobile").value = item.mobile);
+									$(document.getElementById("address").value = item.address);
+									// $('#blockid').append('<option value ="' + item.BlockID + '">' + item.BLOCK + '</option>')
+									// $('#plotno').append('<option value ="' + item.Plots + '">' + item.Plots + '</option>')
+								}
+							);
+						}
+
+
+					});
+
+				});
+				$("#projectid").change(function () {
+					getPropertyByProjectID();
+
+				});
+
+				var getPropertyByProjectID = function () {
+					$.ajax({
+						url: '@Url.Action("GetPropertyByProjectID", "Admin")',
+						type: 'GET',
+						data: {
+							projectid: $('#projectid').val(),
+						},
+						success: function (data) {
+							$("#propertyid").find('option').remove()
+							$('#propertyid').append('<option>Select Property Type</option>')
+							$(data).each(
+								function (index, item) {
+									$('#propertyid').append('<option value =' + item.properytid + '>' + item.tType + '</option>');
+									alert("1");
+									// $('#blockid').append('<option value ="' + item.BlockID + '">' + item.BLOCK + '</option>')
+									// $('#plotno').append('<option value ="' + item.Plots + '">' + item.Plots + '</option>')
+								}
+							);
+
+						}
+
+
+					});
+
+
+				}
+				$("#projectid").change(function () {
+					getPropertyByProjectID();
+
+				});
+
+				var getPropertyByProjectID = function () {
+					$.ajax({
+						url: '@Url.Action("GetPropertyByProjectID", "Admin")',
+						type: 'GET',
+						data: {
+							projectid: $('#projectid').val(),
+						},
+						success: function (data) {
+							$("#propertyid").find('option').remove()
+							$('#propertyid').append('<option>Select Property Type</option>')
+							$(data).each(
+								function (index, item) {
+									$('#propertyid').append('<option value =' + item.properytid + '>' + item.tType + '</option>');
+									// $('#blockid').append('<option value ="' + item.BlockID + '">' + item.BLOCK + '</option>')
+									// $('#plotno').append('<option value ="' + item.Plots + '">' + item.Plots + '</option>')
+								}
+							);
+						}
+
+
+					});
+				}
+
+				$("#propertyid").change(function () {
+					getBlockByPropropertyID();
+
+
+				});
+
+				var getBlockByPropropertyID = function () {
+					$.ajax({
+						url: '@Url.Action("GetBlockByProprtyID", "Admin")',
+						type: 'GET',
+						data: {
+							propertyid: $('#propertyid').val(),
+							projectid: $('#projectid').val(),
+						},
+						success: function (data) {
+							$("#blockid").find('option').remove()
+							$('#blockid').append('<option>Select Block</option>')
+							$(data).each(
+								function (index, item) {
+									$('#blockid').append('<option value =' + item.blockId + '>' + item.block + '</option>');
+									// $('#blockid').append('<option value ="' + item.BlockID + '">' + item.BLOCK + '</option>')
+									// $('#plotno').append('<option value ="' + item.Plots + '">' + item.Plots + '</option>')
+								}
+							);
+						}
+
+
+					});
+				}
+
+
+				$("#blockid").change(function () {
+					gePlotByBlockID();
+
+				});
+
+				var gePlotByBlockID = function () {
+					$.ajax({
+						url: '@Url.Action("GePlotByBlockID", "Admin")',
+						type: 'GET',
+						data: {
+							blockid: $('#blockid').val(),
+							projectid: $('#projectid').val(),
+						},
+						success: function (data) {
+							$("#plotno").find('option').remove()
+							$('#plotno').append('<option>Select Plot No</option>')
+							$(data).each(
+								function (index, item) {
+									for (let i = 1; i <= item.plots; i++) {
+
+
+										$('#plotno').append('<option value =' + item.block + '' + i + ' - ' + item.plotSize + '>' + item.block + '' + i + ' - ' + item.plotSize + ' Sq.Ft.  </option>');
+									}
+									// $('#blockid').append('<option value ="' + item.BlockID + '">' + item.BLOCK + '</option>')
+									// $('#plotno').append('<option value ="' + item.Plots + '">' + item.Plots + '</option>')
+								}
+							);
+						}
+
+
+					});
+				}
+
+				function commisionFunction() {
+					//alert("x");
+					let x = document.getElementById("commission");
+					let y = document.getElementById("profit");
+					
+					document.getElementById("commissionvalue").value = x.value * y.value / 100;
+				}
+			</script>
+
+			<partial name="_ValidationScriptsPartial" />
+
+
+		}
+	</div>
+
+
+</section>

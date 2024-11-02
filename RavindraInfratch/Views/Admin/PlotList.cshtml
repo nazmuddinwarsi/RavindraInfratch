@@ -1,0 +1,314 @@
+﻿@model RavindraInfratch.Models.PlotModel
+@{
+	ViewData["Title"] = "Plot List";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<section class="body">
+
+	<!-- start: header -->
+	<header class="header">
+		@* <uc1:AdminHeader ID="AdminHeader1" runat="server" /> *@
+		@Html.Partial("_AdminHeader")
+		<!-- start: search & user box -->
+		<!-- end: search & user box -->
+	</header>
+	<!-- end: header -->
+
+	<div class="inner-wrapper">
+		<!-- start: sidebar -->
+		@* @{
+		Html.RenderPartial("_AdminMenu");
+		} *@
+		@Html.Partial("_AdminMenu")
+		<!-- end: sidebar -->
+		<div>
+
+			<!-- Modal Basic -->
+			<!-- Modal Bootstrap -->
+
+		</div>
+
+		<section role="main" class="content-body card-margin">
+
+
+			<!-- start: page -->
+
+
+			<div class="row">
+				<div class="col-lg-6">
+					<section class="card form-wizard" id="w1">
+						<header class="card-header">
+							<div class="card-actions">
+								<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+								<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+							</div>
+
+							<h2 class="card-title">Add Plots</h2>
+
+						</header>
+						<form method="post" action="PlotList">
+							<div class="card-body card-body-nopadding">
+
+								<div class="form-horizontal" novalidate="novalidate">
+									
+									<div>
+										
+										<div id="w1-account" class="tab-pane p-3 ">
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-last-name">Project Name</label>
+												<div class="col-sm-9">
+
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-user"></i>
+																</span>
+															</span>
+															@* <asp:DropDownList ID="DrpSponsor" runat="server" data-plugin-selectTwo class="form-control populate">
+
+															</asp:DropDownList> *@
+
+															<select asp-for="Projectid" data-plugin-selectTwo class="form-control populate" asp-items="@Model.ProjectList">
+																<option>Please select project</option>
+
+															</select>
+															<br />
+															<span asp-validation-for="Projectid" class="text-danger"></span>
+															@* @Html.DropDownListFor(m=>m.ac)
+															@Html.DropDownListFor(m => m.SessionID, new SelectList(Model.SessionList, "Value", "Text"), new { @class = "form-control form-control-lg" }) *@
+															@* @Html.DropDownListFor(m => m.RegistrationList, new SelectList(Model.RegistrationList, "Value", "Text"), "Select Sponsor", new { @class = "form-control populate" }) *@
+														</div>
+													</div>
+
+
+
+												</div>
+											</div>
+
+											</div>
+										<div id="w1-account" class="tab-pane p-3 ">
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-last-name">Property Name</label>
+												<div class="col-sm-9">
+
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-user"></i>
+																</span>
+															</span>
+															@* <asp:DropDownList ID="DrpSponsor" runat="server" data-plugin-selectTwo class="form-control populate">
+
+															</asp:DropDownList> *@
+
+															<select asp-for="Propertyid" data-plugin-selectTwo class="form-control populate" asp-items="@Model.PropertyList">
+																<option>Please select property</option>
+
+															</select>
+															<br />
+															<span asp-validation-for="Projectid" class="text-danger"></span>
+															@* @Html.DropDownListFor(m=>m.ac)
+															@Html.DropDownListFor(m => m.SessionID, new SelectList(Model.SessionList, "Value", "Text"), new { @class = "form-control form-control-lg" }) *@
+															@* @Html.DropDownListFor(m => m.RegistrationList, new SelectList(Model.RegistrationList, "Value", "Text"), "Select Sponsor", new { @class = "form-control populate" }) *@
+														</div>
+													</div>
+
+
+
+												</div>
+											</div>
+
+										</div>
+										<div id="w1-account" class="tab-pane p-3 ">
+											<div class="form-group row">
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-last-name">Block Name</label>
+												<div class="col-sm-9">
+
+													<div class="col-lg-12">
+														<div class="input-group">
+															<span class="input-group-prepend">
+																<span class="input-group-text">
+																	<i class="fas fa-user"></i>
+																</span>
+															</span>
+															@* <asp:DropDownList ID="DrpSponsor" runat="server" data-plugin-selectTwo class="form-control populate">
+
+															</asp:DropDownList> *@
+
+															<select asp-for="Blockid" data-plugin-selectTwo class="form-control populate" asp-items="@Model.BlockListSelect">
+																<option>Please select block</option>
+
+															</select>
+															<br />
+															<span asp-validation-for="Blockid" class="text-danger"></span>
+															@* @Html.DropDownListFor(m=>m.ac)
+															@Html.DropDownListFor(m => m.SessionID, new SelectList(Model.SessionList, "Value", "Text"), new { @class = "form-control form-control-lg" }) *@
+															@* @Html.DropDownListFor(m => m.RegistrationList, new SelectList(Model.RegistrationList, "Value", "Text"), "Select Sponsor", new { @class = "form-control populate" }) *@
+														</div>
+													</div>
+
+
+
+												</div>
+											</div>
+
+										</div>
+										<div id="w1-account" class="tab-pane p-3 ">
+											<div class="form-group row">
+
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email">Plot Quantity</label>
+												<div class="col-sm-9">
+													<div class="col-lg-12">
+														<div class="input-group">
+															@* 	@Html.DisplayNameFor(model => model.State1)
+															@Html.TextBoxFor(m => m.state, new { @class = "form-control form-control-lg" })
+															*@
+															<input type="text" asp-for="Id" hidden />
+															<input type="text" asp-for="Plots" class="form-control" placeholder="Enter Plot Quantity" />
+
+														</div>
+														<span asp-validation-for="Plots" class="text-danger"></span>
+													</div>
+												</div>
+											</div>
+
+
+										</div>
+										<div id="w1-account" class="tab-pane p-3 ">
+											<div class="form-group row">
+
+												<label class="col-sm-3 control-label text-sm-right pt-1" for="w1-email">Plot Size (Sq.Feet)</label>
+												<div class="col-sm-9">
+													<div class="col-lg-12">
+														<div class="input-group">
+															@* 	@Html.DisplayNameFor(model => model.State1)
+															@Html.TextBoxFor(m => m.state, new { @class = "form-control form-control-lg" })
+															*@
+															 
+															<input type="text" asp-for="PlotSize" class="form-control" placeholder="Enter Plot Size" />
+
+														</div>
+														<span asp-validation-for="PlotSize" class="text-danger"></span>
+													</div>
+												</div>
+											</div>
+
+
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+							<div class="card-footer">
+								<button class="btn btn-warning mt-2 float-right">Submit</button>
+								@* <input type="submit"   value="Submit"  class="btn btn-warning mt-2 float-right" /> *@
+
+							</div>
+						</form>
+					</section>
+				</div>
+				<div class="col-lg-6">
+					<section class="card form-wizard" id="w1">
+						<header class="card-header">
+							<div class="card-actions">
+								<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+								<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+							</div>
+
+							<h2 class="card-title">Plots List</h2>
+						</header>
+						<div class="card-body card-body-nopadding">
+							<div id="w1-account" class="tab-pane p-3 ">
+								<div>
+									<table cellspacing="0" rules="all" class="table table-bordered table-striped mb-0" border="1" id="grd" style="border-collapse:collapse;">
+										<thead>
+											<tr class="headerStyle">
+												<th scope="col">Project Name</th>
+												<th scope="col">Property Name</th>
+												<th scope="col">Block Name</th>
+												<th scope="col">Plots</th>
+												<th scope="col">Plot Size</th>
+												<th align="center" scope="col" style="width:50px;">Edit</th>
+												<th align="center" scope="col" style="width:50px;">Delete</th>
+											</tr>
+										</thead>
+										<tbody>
+											@if (Model != null && Model.PlotModelList.Any())
+											{
+												 
+
+												@foreach (var ProjectData in Model.PlotModelList)
+												{
+													var moid = "modal" + ProjectData.Id;
+													<tr class="rowStyle">
+														<td style="white-space:nowrap;">@ProjectData.ProjectName</td>
+														<td style="white-space:nowrap;">@ProjectData.Propertyname</td>
+														<td style="white-space:nowrap;">@ProjectData.Blockname</td>
+														<td style="white-space:nowrap;">@ProjectData.Plots</td>
+														<td style="white-space:nowrap;">@ProjectData.PlotSize Sq.Ft.</td>
+														<td align="center">
+
+															<a asp-controller="Admin" asp-action="PlotList" asp-route-id="@ProjectData.Id"><img src="~/../images/img_edit.png" /></a>
+
+
+														</td>
+
+														<td align="center">
+
+															<a class="mb-1 mt-1 mr-1 modal-basic btn btn-default" href="#@moid"><img src="~/../images/img_delete.png" /></a>
+
+
+														</td>
+													</tr>
+													<div id="@moid" class="modal-block mfp-hide">
+														<section class="card">
+															<header class="card-header">
+																<h2 class="card-title">Are you sure?</h2>
+															</header>
+															<div class="card-body">
+																<div class="modal-wrapper">
+																	<div class="modal-text">
+																		<p class="mb-0">Are you sure that you want to delete this data?</p>
+																	</div>
+																</div>
+															</div>
+															<footer class="card-footer">
+																<div class="row">
+																	<div class="col-md-12 text-right">
+																		<a asp-controller="Admin" asp-action="BlockListDel" class="btn btn-primary" asp-route-id="@ProjectData.Id">Confirm</a>
+
+																		<button class="btn btn-default modal-dismiss">Cancel</button>
+																	</div>
+																</div>
+															</footer>
+														</section>
+													</div>
+												}
+											}
+
+
+										</tbody>
+										<tfoot>
+										</tfoot>
+									</table>
+								</div>
+							</div>
+						</div>
+
+					</section>
+				</div>
+			</div>
+			<!-- end: page -->
+		</section>
+		@section Scripts
+  {
+			<partial name="_ValidationScriptsPartial" />
+		}
+	</div>
+
+
+</section>
+
